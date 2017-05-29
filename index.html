@@ -20,6 +20,13 @@
     <!-- demos -->
     <script>
       var email = $("input[name='invalid-email']")
+      $.fn.emailValidator = function() {
+        var regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+        return regexEmail.test(this.val())
+      };
+
+      console.log(email.emailValidator());
+
       email.keyup(function() {
         if (!email.emailValidator()) {
           $(email).addClass("error").removeClass("success")
